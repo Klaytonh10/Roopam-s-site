@@ -1,0 +1,272 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  border: none;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: #f9ece5;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #014b43;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.header-container {
+  flex: 0 0 auto;
+  padding: clamp(16px, 2.5vw, 28px) 20px;
+  text-align: center;
+  background-color: #b7c497;
+}
+
+.header-container h1 {
+  margin: 0;
+  font-size: clamp(4rem, 3vw, 8rem);
+  color: #014b43;
+}
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: min(100% - 32px, 960px);
+  margin: 0 auto;
+  padding: clamp(12px, 2.5vh, 24px) 0;
+}
+
+.intro {
+  max-width: 680px;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  margin: 0 auto clamp(12px, 2.5vh, 24px);
+  text-align: center;
+}
+
+.intro h3 {
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 2.5vw, 4.6rem);
+}
+
+.intro p {
+  margin: 0;
+  color: #35544c;
+  font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+  line-height: 1.45;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 20px);
+  flex: 1 1 0;
+  min-height: clamp(120px, 25vh, 220px);
+  width: 100%;
+  margin: 0 auto clamp(12px, 2.5vh, 24px);
+}
+
+.all-tts-container {
+  position: relative;
+  height: 100%;
+  max-height: 62dvh;
+  max-width: min(280px, calc(100% - 112px));
+  aspect-ratio: 9 / 16;
+  flex: 0 1 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #e4d7d0;
+}
+
+.tiktok-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0s linear 0.5s;
+}
+
+.tiktok-container.enter-from-left {
+  opacity: 0;
+  visibility: visible;
+  z-index: 2;
+  transition: none;
+}
+
+.tiktok-container.enter-from-right {
+  opacity: 0;
+  visibility: visible;
+  z-index: 2;
+  transition: none;
+}
+
+.tiktok-container.enter-from-left {
+  transform: translateX(-100%);
+}
+
+.tiktok-container.enter-from-right {
+  transform: translateX(100%);
+}
+
+.tiktok-container.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  z-index: 2;
+
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0s;
+}
+
+.tiktok-container.exit-right {
+  opacity: 0;
+  visibility: visible;
+  transform: translateX(100%);
+  z-index: 1;
+
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0s;
+}
+
+.tiktok-container.exit-left {
+  opacity: 0;
+  visibility: visible;
+  transform: translateX(-100%);
+  z-index: 1;
+
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease,
+    visibility 0s;
+}
+
+.tiktok-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #014b43;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(24px, 5vw, 48px);
+  font-size: 1.7rem;
+}
+
+.link-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.link-div a {
+  color: #014b43;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.link-div a:hover {
+  color: #099078;
+}
+
+.img-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-div img {
+  display: block;
+  width: auto;
+  height: 28px;
+  filter: brightness(0);
+}
+
+.arrow:hover {
+  background: #099078;
+}
+
+.arrow:focus-visible,
+.link-div a:focus-visible {
+  outline: 3px solid #099078;
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  .body-container {
+    width: min(100% - 24px, 960px);
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+
+  .links-container {
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tiktok-container,
+  .tiktok-container.enter-from-left,
+  .tiktok-container.enter-from-right,
+  .tiktok-container.active,
+  .tiktok-container.exit-left,
+  .tiktok-container.exit-right {
+    transition: none;
+  }
+}
