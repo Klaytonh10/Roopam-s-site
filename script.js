@@ -93,6 +93,8 @@ function showVideo(index, direction) {
   transitionTimeout = window.setTimeout(finishAnimation, 700);
 }
 
+loadVideo(videos[currentIndex]);
+
 nextBtn.addEventListener("click", () => {
   showVideo(currentIndex + 1, RIGHT);
 });
